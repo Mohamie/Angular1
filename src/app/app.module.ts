@@ -9,12 +9,18 @@ import { RegistrationComponent } from './authentication/registration/registratio
 import { LoginComponent } from './authentication/login/login.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UserAPI } from './authentication/data/api/user.api';
+import { AdvertListComponent } from './advertisement/advert/list/advert-list.component';
+import { AdvertDetailsComponent } from './advertisement/advert/details/advert-details.component';
+import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    AdvertListComponent,
+    AdvertDetailsComponent,
+    AdvertEditComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +30,8 @@ import { UserAPI } from './authentication/data/api/user.api';
     RouterModule.forRoot([
       {path: 'register', component: RegistrationComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'home', component: AdvertListComponent},
+      {path: 'checkout', component: AdvertDetailsComponent},
     ]),
     InMemoryWebApiModule.forRoot(UserAPI)
   ],
