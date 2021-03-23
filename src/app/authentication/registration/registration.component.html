@@ -1,0 +1,154 @@
+<div class="card shadow mb-3">
+    <div class="card-header py-3">
+        <p class="text-warning m-0 font-weight-bold">User Registration</p>
+    </div>
+    <form [formGroup]='userForm'>
+        <div class="card-body">
+
+            <h5 class="text-info">Personal Details</h5>
+                        
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="fornames" class="text-muted"><strong>Fornames</strong></label>
+                        <input type="text" class="form-control" id="fornames" 
+                                formNameControl='fornames'
+                                [ngClass]="{'is-invalid': (userForm.get('fornames').touched || userForm.get('fornames').dirty) && !userForm.get('fornames').valid }"/>
+
+                        
+                        <!-- <span class="invalid-feedback">
+                            <span *ngIf="userForm.get('fornames').errors?.required">
+                                Please enter your fornames.
+                            </span>
+                            <span *ngIf="userForm.get('fornames').errors?.minlength">
+                                The first name must be longer than 3 characters.
+                            </span>
+                        </span> -->
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="last_name" class="text-muted"><strong>Surname</strong></label>
+                        <input type="text" class="form-control" id="last_name" />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="form-row">
+                
+                <div class="col">
+                    <div class="form-group">
+                        <label for="email" class="text-muted"><strong>Email Address</strong></label>
+                        <input type="email" class="form-control" id="email" 
+                                formControlName='email'/>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="confirm_email" class="text-muted"><strong>Confirm Email</strong></label>
+                        <input type="email" class="form-control" id="confirm_email"
+                        formControlName='confirmEmail' />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="password" class="text-muted"><strong>Password</strong></label>
+                        <input type="password" class="form-control" id="password"
+                                formControlName='password'>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="confirm_password" class="text-muted"><strong>Confirm Password</strong></label>
+                        <input type="password" class="form-control" id="confirm_password"
+                                formControlName='confirmPassword' />
+                    </div>
+                </div>
+            </div> -->
+
+            <hr>
+
+            <h5 class="text-info">Delivery Address</h5>
+            
+            <!-- <div class="form-row">
+
+                <div class="col-6">
+                    <div class="form-group">
+
+                        <label for="street" class="text-muted"><strong>Street</strong></label>
+                        <input type="text" class="form-control mb-3" id="street"
+                                formControlName='street'  />
+                        
+                    </div>
+            
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="complex" class="text-muted"><strong>Building/Complex</strong></label>
+                        <input type="text" class="form-control mb-3" id="complex"
+                                formControlName='complex' />
+                
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="form-row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="suburb" class="text-muted"><strong>Suburb</strong></label>
+                        <input type="text" class="form-control mb-3" id="suburb"
+                                formControlName='suburb'/>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label for="town" class="text-muted"><strong>City/Town</strong></label>
+                    <input type="text" class="form-control mb-3" id="town"
+                            formControlName='town' />    
+                </div>
+                
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="postal" class="text-muted"><strong>Postal Code</strong></label>
+                        <input type="text" class="form-control" id="postal"
+                                formControlName='postalCode'/>
+                    </div>    
+                </div>
+                
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="province" class="text-muted"><strong>Province</strong></label>
+                        <input type="text" class="form-control" id="province"
+                                formControlName='province' />
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="form-group">
+                
+                <button class="btn btn-outline-warning btn-sm">Add Secondary Address</button>
+            </div>
+
+            <hr>
+
+            
+            
+        </div>
+        <!-- Card Footer -->
+        <div class="card-footer m-0">
+            <button class="btn btn-warning btn-block"><i class="fa fa-user-plus"></i> Register User</button>
+        </div>
+        </form>
+</div>

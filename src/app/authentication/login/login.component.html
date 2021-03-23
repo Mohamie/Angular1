@@ -1,0 +1,59 @@
+
+<div class="card shadow container border rounded p-5 my-5" style="max-width: 700px;"> 
+
+    <h1 class="text-center text-muted"> Login</h1>
+
+    <form #loginForm="ngForm"
+          (ngSubmit)='onLogin(loginForm)'>
+
+        <input type="email" class="form-control" placeholder="Email"
+                id="email"
+                required
+                email 
+                [(ngModel)]="user.email"
+                name='email'
+                #emailVar='ngModel'
+                [ngClass]="{'is-invalid': (emailVar.touched || emailVar.dirty) && !emailVar.valid }"
+               >
+        <span class="invalid-feedback">
+            <span *ngIf="emailVar.errors?.required">
+                Please enter your email address.
+            </span>
+            <span *ngIf="emailVar.errors?.email">
+                Please enter a valid email address.
+            </span>
+        </span>
+
+        <input type="password" class="form-control mt-4" placeholder="Password"
+                id="password"
+                required
+                password
+                [(ngModel)]='user.password'
+                name='password'
+                #passwordVar='ngModel'
+                [ngClass]="{'is-invalid': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }"
+                >
+
+        <span class="invalid-feedback">
+           <span *ngIf='passwordVar.errors?.required'>
+                Please enter your password
+           </span>
+        </span>                
+
+        <div *ngIf='isInvalid' class="bg-danger text-white text-center mt-4">
+            Invalid Email or Password
+        </div>
+
+
+       <button [disabled]='!loginForm.valid' 
+                id="btnLogin"
+               class="btn btn-warning btn-block mt-3 text-white">
+               <span *ngIf='!isLoading'>
+                   <i class="fa fa-sign-in"></i> Login      
+               </span>
+               <i *ngIf='isLoading' class="fa fa-spinner"></i>
+       </button>
+
+       <h6 class="text-center mt-4">New to Shop-A-Lot? <span><a href="#">Create Account</a></span> </h6>
+    </form>
+</div>
