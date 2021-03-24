@@ -13,6 +13,7 @@ import { AdvertListComponent } from './advertisement/advert/list/advert-list.com
 import { AdvertDetailsComponent } from './advertisement/advert/details/advert-details.component';
 import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.component';
 import { UserProfileComponent } from './authentication/user-profile/user-profile.component';
+import { AdvertAPI } from './advertisement/data/api/advert.api';
 
 @NgModule({
   declarations: [
@@ -33,9 +34,11 @@ import { UserProfileComponent } from './authentication/user-profile/user-profile
       {path: 'login', component: LoginComponent},
       {path: 'home', component: AdvertListComponent},
       {path: 'profile', component: UserProfileComponent},
-      {path: 'checkout', component: AdvertDetailsComponent},
+      {path: 'checkout/:advertId', component: AdvertDetailsComponent},
     ]),
-    InMemoryWebApiModule.forRoot(UserAPI)
+    InMemoryWebApiModule.forRoot(UserAPI),
+    InMemoryWebApiModule.forRoot(AdvertAPI)
+
   ],
   providers: [],
   bootstrap: [AppComponent]

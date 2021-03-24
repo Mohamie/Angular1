@@ -1,15 +1,17 @@
 <div class="row mx-auto">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
         <div class="card shadow">
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row p-2">
+                <div class="col-md-5">
                     <img src="assets/images/cart.png"  height="300px" class="card-img-top" >    
                 </div>
-                <div class="col-5 my-auto">
+                <div *ngIf='advert' class="col-7 my-auto px-1">
                     <div class="car-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">{{advert.title}}</h5>
+                        <p class="text-muted">Price {{advert.price |  currency : 'R' : 'symbol' : '1.2-2' }}</p>
+                        <p class="text-primary">Description: <br>{{advert.description}}</p>
+                        <p class="text-info">Date Created: <br>{{advert.dateCreated | date}}</p>
         
                     </div>          
                 </div>
@@ -30,6 +32,6 @@
         
         </div>        
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
 
 </div>

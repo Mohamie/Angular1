@@ -6,6 +6,6 @@ export interface Advert
     title: string;
     description: string;
     price: number;
-    dateCreated?: Date;
+    dateCreated: Date;
     user?: User;
 }

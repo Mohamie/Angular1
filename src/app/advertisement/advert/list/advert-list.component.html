@@ -1,54 +1,19 @@
-<div class="row ">
-    <div class="col-md-4 col-sm-6 mt-3">
+<div *ngIf='adverts' class="row ">
+
+    <div *ngFor='let advert of adverts' class="col-md-4 col-sm-6 mt-3">
+        
         <div class="card shadow" style="width: 18rem;">
 
             <img src="assets/images/cart.png" class="card-img-top" >  
             
             <div class="card-footer">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button class="btn btn-outline-warning btn-block" [routerLink]="['/checkout']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy</button>
+                <h5 class="card-title">{{advert.title}}</h5>
+                <p class="card-text">{{advert.description}}</p>
+                <button class="btn btn-outline-warning btn-block" [routerLink]="['/checkout', advert.id]"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy</button>
             </div>
-          </div>
-    </div>
-  
-    <div class="col-md-4 col-sm-6 mt-3">
-        <div class="card shadow" style="width: 18rem;">
-
-            <img src="assets/images/cart.png" class="card-img-top" >  
-
-            <div class="card-footer">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button class="btn btn-outline-warning btn-block"><i class="fa fa-money"></i> Buy</button>
-            </div>
-          </div>
-    </div>
-  
-    <div class="col-md-4 col-sm-6 mt-3">
-        <div class="card shadow" style="width: 18rem;">
-
-            <img src="assets/images/cart.png" class="card-img-top" >  
-
-            <div class="card-footer">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button class="btn btn-outline-warning btn-block" ><i class="fa fa-money"></i> Buy</button>
-            </div>
-          </div>
-    </div>
-  
-    <div class="col-md-4 col-sm-6 mt-3">
-        <div class="card shadow" style="width: 18rem;">
-
-            <img src="assets/images/cart.png" class="card-img-top" >  
-            
-            <div class="card-footer">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button class="btn btn-outline-warning btn-block"><i class="fa fa-money"></i> Buy</button>
-            </div>
-          </div>
+        
+        </div>
+    
     </div>
   
 </div>
