@@ -39,10 +39,9 @@ export class UserService
 
         return throwError(err.error.message);
     }
-
-    //get user by email
    
     //save/register user
     
     //sign in user (local Storage)
+    
 }

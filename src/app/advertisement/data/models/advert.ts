@@ -7,5 +7,5 @@ export interface Advert
     description: string;
     price: number;
     dateCreated: Date;
-    user?: User;
+    userEmail?: string;
 }

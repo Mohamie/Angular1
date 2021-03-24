@@ -9,10 +9,8 @@ import { RegistrationComponent } from './authentication/registration/registratio
 import { LoginComponent } from './authentication/login/login.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UserAPI } from './authentication/data/api/user.api';
-import { AdvertListComponent } from './advertisement/advert/list/advert-list.component';
-import { AdvertDetailsComponent } from './advertisement/advert/details/advert-details.component';
-import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.component';
 import { UserProfileComponent } from './authentication/user-profile/user-profile.component';
+import { AdvertModule } from './advertisement/advert/advert.module';
 import { AdvertAPI } from './advertisement/data/api/advert.api';
 
 @NgModule({
@@ -20,21 +18,18 @@ import { AdvertAPI } from './advertisement/data/api/advert.api';
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    AdvertListComponent,
-    AdvertDetailsComponent,
-    AdvertEditComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    AdvertModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'register', component: RegistrationComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'home', component: AdvertListComponent},
-      {path: 'profile', component: UserProfileComponent},
-      {path: 'checkout/:advertId', component: AdvertDetailsComponent},
+      {path: 'profile', component: UserProfileComponent}
     ]),
     InMemoryWebApiModule.forRoot(UserAPI),
     InMemoryWebApiModule.forRoot(AdvertAPI)

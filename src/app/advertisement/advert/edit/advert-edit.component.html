@@ -1,1 +1,69 @@
-<p>advert-edit works!</p>
+<div class="card shadow">
+    <form action="">
+
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">New Item </p>
+        </div>
+       <div class="card-body">
+            <div class="row">
+                <div class="col-8 ">
+                    <div class="form-group row">
+
+                        <label for="title" class="col-md-4 col-form-label">Title</label>
+                        
+                        <div class="col-md-8">
+                            <input 
+                                    class="form-control" 
+                                    id="title" 
+                                    type="text" 
+                                    placeholder="Title(required)">
+        
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+        
+                        <label for="price" class="col-md-4 col-form-label">Price</label>
+                        
+                        <div class="col-md-8">
+                            <input 
+                                    class="form-control" 
+                                    id="price" 
+                                    type="number" 
+                                    placeholder="Price(required)">
+        
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+        
+                        <label for="description" class="col-md-4 col-form-label">Item Description</label>
+                        
+                        <div class="col-md-8">
+                            <textarea 
+                                    id="description" 
+                                    class="form-control" 
+                                    cols="30" rows="7"
+                                    placeholder="Description" 
+                                    >
+                            </textarea>
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="assets/images/cart.png"  class="card-img-top" >  
+                </div>
+            </div>
+       </div>
+
+       <div class="card-footer">
+           <div class="row justify-content-between">
+               <button class="btn btn-outline-warning"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Item</button>   
+               <button class="btn btn-outline-dark"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>   
+               <button class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>   
+           </div>
+       </div>
+
+    </form>
+</div>
