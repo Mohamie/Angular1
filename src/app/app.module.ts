@@ -12,6 +12,7 @@ import { UserAPI } from './authentication/data/api/user.api';
 import { AdvertListComponent } from './advertisement/advert/list/advert-list.component';
 import { AdvertDetailsComponent } from './advertisement/advert/details/advert-details.component';
 import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.component';
+import { UserProfileComponent } from './authentication/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.com
       {path: 'register', component: RegistrationComponent},
       {path: 'login', component: LoginComponent},
       {path: 'home', component: AdvertListComponent},
+      {path: 'profile', component: UserProfileComponent},
       {path: 'checkout', component: AdvertDetailsComponent},
     ]),
     InMemoryWebApiModule.forRoot(UserAPI)
