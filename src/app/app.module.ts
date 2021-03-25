@@ -12,6 +12,7 @@ import { UserAPI } from './authentication/data/api/user.api';
 import { UserProfileComponent } from './authentication/user-profile/user-profile.component';
 import { AdvertModule } from './advertisement/advert/advert.module';
 import { AdvertAPI } from './advertisement/data/api/advert.api';
+import { ShopALotAPI } from './shared/api/shop-a-lot.api';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,7 @@ import { AdvertAPI } from './advertisement/data/api/advert.api';
       {path: 'login', component: LoginComponent},
       {path: 'profile', component: UserProfileComponent}
     ]),
-    InMemoryWebApiModule.forRoot(UserAPI),
-    InMemoryWebApiModule.forRoot(AdvertAPI)
+    InMemoryWebApiModule.forRoot(ShopALotAPI)
 
   ],
   providers: [],

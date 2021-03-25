@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../data/models/user';
 import { UserService } from '../data/services/user.service';
 
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit
   errorMessage: string;
   
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void 
   {
@@ -54,8 +55,9 @@ export class LoginComponent implements OnInit
         let user_serialized = JSON.stringify(user);
         
         localStorage.setItem("loggedUser", user_serialized);
-
-        console.log(`User on LocalStorage ${localStorage}`)
+  
+        this.router.navigate(['/home']);
+       
       }
       else
       {

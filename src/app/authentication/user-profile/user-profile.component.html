@@ -1,19 +1,20 @@
-<div class="card shadow">
-    <div class="card-body">
+<div  class="card shadow">
+    <div *ngIf='loggedUser' class="card-body">
         <div class="row">
             <div class="col-md-4 my-auto">
                 <i class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 300px;"></i>
             </div>
             <div class="col-md-8">
-                <p class="font-weight-bold">Username</p>
-                <p class="font-weight-bold">Email</p>
+                <p class="font-weight-bold">Names: <span class="text-muted">{{loggedUser.fornames}} {{loggedUser.surname}}</span></p>
+                <p class="font-weight-bold">Email: <span class="text-muted">{{loggedUser.email}}</span></p>
                 <hr>
                 <p class="font-weight-bold">Address</p>
-                <p class="text-muted">Central University of Technology</p>
-                <p class="text-muted">Eendrag Male Residence</p>
-                <p class="text-muted">Willows</p>
-                <p class="text-muted">Bloemfontein</p>
-                <p class="text-muted">9301</p>
+                <p class="text-muted">
+                    {{loggedUser.address.street}}  {{loggedUser.address.complex}}
+                    <br>{{loggedUser.address.surburb}}
+                    <br>{{loggedUser.address.town}}
+                    <br>{{loggedUser.address.postalCode}}
+                </p>
             </div>
         </div>
     </div>
@@ -21,6 +22,7 @@
 
         <a [routerLink]="['/edit']" class="btn btn-warning mb-3"><i class="fa fa-plus-square" aria-hidden="true"></i> Sell Item</a>
 
+        <store-user-list [loggedUserEmail]='loggedUser.email'></store-user-list>
        
     </div>
 </div>

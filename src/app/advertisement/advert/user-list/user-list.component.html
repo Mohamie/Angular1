@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let advert of adverts'>
-        <th>1</th>
+      <tr *ngFor='let advert of adverts; let i = index'>
+        <th>{{i + 1}}</th>
         <td>{{advert.title}}</td>
         <td colspan="3">{{advert.description}}</td>
         <td>{{advert.dateCreated | date}}</td>

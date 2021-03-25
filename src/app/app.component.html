@@ -1,20 +1,23 @@
 <nav class="navbar navbar-light bg-warning sticky-top">
-   <a class="navbar-brand text-muted"><i class="fa fa-shopping-basket"></i> Shop-A-Lot</a>
+   <a class="navbar-brand text-muted" [routerLink]="['/home']"><i class="fa fa-shopping-basket"></i> Shop-A-Lot</a>
   
    <ul class="nav justify-content-end bg-white">
       <li class="nav-item">
         <a class="nav-link text-secondary" routerLinkActive='active' [routerLink]="['/home']"><i class="fa fa-home" aria-hidden="true"></i>
           Home</a>
       </li>
-      <li class="nav-item">
+      <li  *ngIf='!isLoggedUser' class="nav-item">
         <a class="nav-link text-secondary" routerLinkActive='active' [routerLink]="['/login']"><i class="fa fa-sign-in" aria-hidden="true"></i>
           Login</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf='isLoggedUser' class="nav-item">
         <a class="nav-link text-secondary" routerLinkActive='active' [routerLink]="['/profile']"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-          User Profile</a>
+          {{getLoggedUsername}}</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf='isLoggedUser' class="nav-item">
+        <a class="nav-link text-secondary" (click)='logout()'><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+      </li>
+      <li  *ngIf='!isLoggedUser' class="nav-item">
         <a class="nav-link text-secondary" routerLinkActive='active' [routerLink]="['/register']"><i class="fa fa-user-plus" aria-hidden="true"></i>
           Register</a>
       </li>
