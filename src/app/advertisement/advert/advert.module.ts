@@ -5,7 +5,7 @@ import { AdvertEditComponent } from './edit/advert-edit.component';
 import { AdvertDetailsComponent } from './details/advert-details.component';
 import { AdvertRoutingModule } from './advert-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -17,15 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserListComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     AdvertRoutingModule
   ],
 
   exports: [
-    UserListComponent,
-    FormsModule
+    UserListComponent
   ]
 })
 

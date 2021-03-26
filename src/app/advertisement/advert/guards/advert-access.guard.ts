@@ -28,7 +28,7 @@ export class AdvertAccessGuard implements CanActivate, CanDeactivate<unknown>
       return false;
     }
 
-    console.log('canActivate')
+    
     //check if user is logged in
     let isUserLogged = localStorage.getItem("loggedUser") == null ? false : true;
 
@@ -36,7 +36,7 @@ export class AdvertAccessGuard implements CanActivate, CanDeactivate<unknown>
     if(!isUserLogged)
     {
       alert('Oops! Please login to do this operation...')
-
+      
       return false;
     }
 

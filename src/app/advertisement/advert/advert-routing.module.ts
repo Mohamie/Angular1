@@ -11,11 +11,8 @@ import { AdvertListComponent } from './list/advert-list.component';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     RouterModule.forChild([
-      {path: 'checkout/:advertId', canActivate: [AdvertAccessGuard], component: AdvertDetailsComponent},
-     
-      {path: 'home', component: AdvertListComponent}
+      {path: 'checkout/:advertId', canActivate: [AdvertAccessGuard], component: AdvertDetailsComponent}
     ])
   ],
   exports: [RouterModule]

@@ -9,33 +9,23 @@ import { RegistrationComponent } from './authentication/registration/registratio
 import { LoginComponent } from './authentication/login/login.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { UserProfileComponent } from './authentication/user-profile/user-profile.component';
 import { AdvertModule } from './advertisement/advert/advert.module';
-import { AdvertAPI } from './advertisement/data/api/advert.api';
+
 import { ShopALotAPI } from './shared/api/shop-a-lot.api';
-import { AdvertAccessGuard } from './advertisement/advert/guards/advert-access.guard';
-import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.component';
-import { UserAdvertsGuard } from './authentication/user-profile/user-adverts.guard';
+import { AuthModule } from './authentication/auth.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent,
-    LoginComponent,
-    UserProfileComponent
+   
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AdvertModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'register', component: RegistrationComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'profile', component: UserProfileComponent},
-      {path: 'profile/advert/edit/:advertId', canDeactivate: [UserAdvertsGuard], component: AdvertEditComponent}
-    ]),
+    AuthModule,
+    AdvertModule,
+    AppRoutingModule,
     InMemoryWebApiModule.forRoot(ShopALotAPI)
 
   ],
