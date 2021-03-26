@@ -15,6 +15,7 @@ import { AdvertAPI } from './advertisement/data/api/advert.api';
 import { ShopALotAPI } from './shared/api/shop-a-lot.api';
 import { AdvertAccessGuard } from './advertisement/advert/guards/advert-access.guard';
 import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.component';
+import { UserAdvertsGuard } from './authentication/user-profile/user-adverts.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.com
       {path: 'register', component: RegistrationComponent},
       {path: 'login', component: LoginComponent},
       {path: 'profile', component: UserProfileComponent},
-      {path: 'profile/advert/edit/:advertId', component: AdvertEditComponent}
+      {path: 'profile/advert/edit/:advertId', canActivate: [UserAdvertsGuard], canDeactivate: [UserAdvertsGuard], component: AdvertEditComponent}
     ]),
     InMemoryWebApiModule.forRoot(ShopALotAPI)
 
