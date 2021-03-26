@@ -1,6 +1,14 @@
-<div *ngIf='adverts' class="row ">
+<div class="input-group ">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-search mr-2" aria-hidden="true"></i> Search</span>
+    </div>
+    <input [(ngModel)]='filterAdvertsBySearch' type="text" class="form-control ">
+</div>
 
-    <div *ngFor='let advert of adverts' class="col-md-4 col-sm-6 mt-3">
+
+<div *ngIf='filteredAdverts' class="row ">
+
+    <div *ngFor='let advert of filteredAdverts' class="col-md-4 col-sm-6 mt-3">
         
         <div class="card shadow" style="width: 18rem;">
 
