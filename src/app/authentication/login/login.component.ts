@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit
     //disable button
     this.showProgress(true);
     
-    this.userService.getUserByEmail(this.user.email).subscribe(
+    this.userService.getUserByEmail(this.user.email.trim()).subscribe(
       {
         next: _user => this.authUser(_user),
         error: err => this.errorMessage = err
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit
     {
       console.log(`User: ${user.fornames} ${user.surname} found`);
       
-      if(user.password === this.user.password)
+      if(user.password === this.user.password.trim())
       {
         console.log(`User: ${user.fornames} ${user.surname} Logged in`);
         this.isAuthenticated(true);
