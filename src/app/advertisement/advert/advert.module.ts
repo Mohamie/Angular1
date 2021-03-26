@@ -5,6 +5,7 @@ import { AdvertEditComponent } from './edit/advert-edit.component';
 import { AdvertDetailsComponent } from './details/advert-details.component';
 import { AdvertRoutingModule } from './advert-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,11 +18,14 @@ import { UserListComponent } from './user-list/user-list.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AdvertRoutingModule
   ],
 
   exports: [
-    UserListComponent
+    UserListComponent,
+    CommonModule,
+    FormsModule
   ]
 })
 

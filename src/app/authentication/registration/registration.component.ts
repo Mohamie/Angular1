@@ -26,11 +26,11 @@ export class RegistrationComponent implements OnInit
      this.userForm = this.formBuilder.group({
 
       fornames: ['', [Validators.required, Validators.minLength(3)]],
-      surname: [''],
+      surname: ['', Validators.required],
 
       emailGroup: this.formBuilder.group({
-        email: [''],
-        confirmEmail: ['']
+        email: ['', [Validators.required, Validators.email]],
+        confirmEmail: ['', Validators.required]
       }),
 
       passwordGroup: this.formBuilder.group({

@@ -23,7 +23,7 @@ export class AdvertAccessGuard implements CanActivate, CanDeactivate<unknown>
     if(isNaN(id) || id < 1)
     {
       //redirect to 404 Page
-      alert('Invalid id')
+      alert('Invalid id -' + id)
 
       return false;
     }

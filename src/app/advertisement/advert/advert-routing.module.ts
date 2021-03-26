@@ -14,7 +14,6 @@ import { AdvertListComponent } from './list/advert-list.component';
     CommonModule,
     RouterModule.forChild([
       {path: 'checkout/:advertId', canActivate: [AdvertAccessGuard], component: AdvertDetailsComponent},
-      {path: 'edit/:advertId', canActivate: [AdvertAccessGuard], component: AdvertEditComponent},
       {path: 'home', component: AdvertListComponent}
     ])
   ],

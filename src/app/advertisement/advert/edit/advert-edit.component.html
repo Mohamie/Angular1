@@ -1,5 +1,5 @@
 <div class="card shadow">
-    <form action="">
+    <form>
 
         <div class="card-header py-3">
             <p class="text-primary m-0 font-weight-bold">New Item </p>
@@ -12,7 +12,7 @@
                         <label for="title" class="col-md-4 col-form-label">Title</label>
                         
                         <div class="col-md-8">
-                            <input 
+                            <input  [(ngModel)]='advert.title'
                                     class="form-control" 
                                     id="title" 
                                     type="text" 
@@ -26,7 +26,7 @@
                         <label for="price" class="col-md-4 col-form-label">Price</label>
                         
                         <div class="col-md-8">
-                            <input 
+                            <input [(ngModel)]="advert.price"
                                     class="form-control" 
                                     id="price" 
                                     type="number" 
@@ -40,7 +40,8 @@
                         <label for="description" class="col-md-4 col-form-label">Item Description</label>
                         
                         <div class="col-md-8">
-                            <textarea 
+                            <textarea
+                            [(ngModel)]='advert.description' 
                                     id="description" 
                                     class="form-control" 
                                     cols="30" rows="7"
