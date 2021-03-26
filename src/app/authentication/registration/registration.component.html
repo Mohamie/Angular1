@@ -12,135 +12,254 @@
                     <div class="form-group">
                         <label for="fornames" class="text-muted"><strong>Fornames</strong></label>
                         <input type="text" class="form-control" id="fornames" 
-                                formNameControl='fornames'
-                                [ngClass]="{'is-invalid': (userForm.get('fornames').touched || userForm.get('fornames').dirty) && !userForm.get('fornames').valid }"/>
+                                formControlName='fornames'
+                                [ngClass]="{'is-invalid': (userForm.get('fornames').touched || userForm.get('fornames').dirty) && !userForm.get('fornames').valid }"
+                                />
 
                         
-                        <!-- <span class="invalid-feedback">
+                        <span class="invalid-feedback">
                             <span *ngIf="userForm.get('fornames').errors?.required">
                                 Please enter your fornames.
                             </span>
                             <span *ngIf="userForm.get('fornames').errors?.minlength">
-                                The first name must be longer than 3 characters.
+                                Fornames should be at least 2 characters long.
                             </span>
-                        </span> -->
-                    </div>
-                    <div class="invalid-feedback">
-                        Please provide a valid zip.
+                        </span>
+                        <span class="valid-feedback">
+                            <span > Looks good!</span>
+                        </span>
+                        
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="last_name" class="text-muted"><strong>Surname</strong></label>
-                        <input type="text" class="form-control" id="last_name" />
+                        <label for="surname" class="text-muted"><strong>Surname</strong></label>
+                        <input type="text" class="form-control" id="surname"
+                                formControlName='surname'
+                                [ngClass]="{'is-invalid': (userForm.get('surname').touched || userForm.get('surname').dirty) && !userForm.get('surname').valid }" 
+                                />
+
+                        <span class="invalid-feedback">
+                            <span *ngIf="userForm.get('surname').errors?.required">
+                                Please enter your surname.
+                            </span>
+                            <span *ngIf="userForm.get('surname').errors?.minlength">
+                                Surname should be at least 2 characters long.
+                            </span>
+                        </span>
+                        <span class="valid-feedback">
+                            <span > Looks good!</span>
+                        </span>
+                       
                     </div>
                 </div>
             </div>
 
 
+            <div formGroupName='emailGroup'>
 
-            <!-- <div class="form-row">
+                <div class="form-row">
                 
-                <div class="col">
-                    <div class="form-group">
-                        <label for="email" class="text-muted"><strong>Email Address</strong></label>
-                        <input type="email" class="form-control" id="email" 
-                                formControlName='email'/>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="email" class="text-muted"><strong>Email Address</strong></label>
+                            <input type="email" class="form-control" id="email" 
+                                    formControlName='email'
+                                    [ngClass]="{'is-invalid': userForm.get('emailGroup').errors || (userForm.get('emailGroup.email').touched || userForm.get('emailGroup.email').dirty) && !userForm.get('emailGroup.email').valid }"/>
+
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('emailGroup.email').errors?.required">
+                                    Please enter email address.
+                                </span>
+                               
+                            </span>
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('emailGroup.email').errors?.email">
+                                    Please enter valid email address.
+                                </span>
+                               
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="confirm_email" class="text-muted"><strong>Confirm Email</strong></label>
+                            <input type="email"
+                                   class="form-control" 
+                                   id="confirm_email"
+                                    formControlName='confirmEmail'
+                                    [ngClass]="{'is-invalid': userForm.get('emailGroup').errors || (userForm.get('emailGroup.confirmEmail').touched || userForm.get('emailGroup.confirmEmail').dirty) && !userForm.get('emailGroup.confirmEmail').valid }" />
+                        
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('emailGroup.email').errors?.required">
+                                    Please confirm email address.
+                                </span>
+                                
+                            </span>
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('emailGroup').errors?.emailMatch">
+                                    Emails don't match
+                                </span>
+                                
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="confirm_email" class="text-muted"><strong>Confirm Email</strong></label>
-                        <input type="email" class="form-control" id="confirm_email"
-                        formControlName='confirmEmail' />
-                    </div>
-                </div>
+    
+
             </div>
-
-            <div class="form-row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="password" class="text-muted"><strong>Password</strong></label>
-                        <input type="password" class="form-control" id="password"
-                                formControlName='password'>
+           
+            <div formGroupName='passwordGroup'>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="password" class="text-muted"><strong>Password</strong></label>
+                            <input type="password" class="form-control" id="password"
+                                    formControlName='password'
+                                    [ngClass]="{'is-invalid': userForm.get('passwordGroup').errors || (userForm.get('passwordGroup.password').touched || userForm.get('passwordGroup.password').dirty) && !userForm.get('passwordGroup.password').valid }">
+                        
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('passwordGroup.password').errors?.required">
+                                    Please set your password
+                                </span>
+                                <span *ngIf="userForm.get('passwordGroup.password').errors?.minlength">
+                                    Password should be at least 5 characters long.
+                                </span>
+                                
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="confirm_password" class="text-muted"><strong>Confirm Password</strong></label>
+                            <input type="password" class="form-control" id="confirmPassword"
+                                    formControlName='confirmPassword' 
+                                    [ngClass]="{'is-invalid': userForm.get('passwordGroup').errors || (userForm.get('passwordGroup.confirmPassword').touched || userForm.get('passwordGroup.confirmPassword').dirty) && !userForm.get('passwordGroup.confirmPassword').valid }">
+                        
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('passwordGroup.confirmPassword').errors?.required">
+                                    Please confirm your password
+                                </span>
+                                <span *ngIf="userForm.get('passwordGroup').errors?.passwordMatch">
+                                    Passwords don't match
+                                </span>
+                                         
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="confirm_password" class="text-muted"><strong>Confirm Password</strong></label>
-                        <input type="password" class="form-control" id="confirm_password"
-                                formControlName='confirmPassword' />
-                    </div>
-                </div>
-            </div> -->
-
+                
+            </div>
             <hr>
 
             <h5 class="text-info">Delivery Address</h5>
-            
-            <!-- <div class="form-row">
+                   
+            <div formGroupName='deliveryAddress'>
 
-                <div class="col-6">
-                    <div class="form-group">
+                <div class="form-row">
 
-                        <label for="street" class="text-muted"><strong>Street</strong></label>
-                        <input type="text" class="form-control mb-3" id="street"
-                                formControlName='street'  />
+                    <div class="col-6">
+                        <div class="form-group mb-3">
+    
+                            <label for="street" class="text-muted"><strong>Street</strong></label>
+                            <input type="text" class="form-control " id="street"
+                                    formControlName='street'
+                                    [ngClass]="{'is-invalid': userForm.get('deliveryAddress').errors || (userForm.get('deliveryAddress.street').touched || userForm.get('deliveryAddress.street').dirty) && !userForm.get('deliveryAddress.street').valid }"  />
+
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('deliveryAddress.street').errors?.required">
+                                    Please enter your street address
+                                </span>
+                                
+                            </span>
+                            
+                        </div>
+                
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="complex" class="text-muted"><strong>Building/Complex</strong></label>
+                            <input type="text" class="form-control mb-3" id="complex"
+                                    formControlName='complex' />
+                
+                                    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row mb-3">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="suburb" class="text-muted"><strong>Suburb</strong></label>
+                            <input type="text" class="form-control" id="suburb"
+                                    formControlName='surburb'
+                                    [ngClass]="{'is-invalid': userForm.get('deliveryAddress').errors || (userForm.get('deliveryAddress.surburb').touched || userForm.get('deliveryAddress.surburb').dirty) && !userForm.get('deliveryAddress.surburb').valid }"/>
                         
+                        
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('deliveryAddress.surburb').errors?.required">
+                                    Please enter your suburb name
+                                </span>
+                                
+                            </span>
+                        </div>
                     </div>
-            
+    
+                    <div class="col-4">
+                        <label for="town" class="text-muted"><strong>City/Town</strong></label>
+                        <input type="text" class="form-control" id="town"
+                                formControlName='town'
+                                [ngClass]="{'is-invalid': userForm.get('deliveryAddress').errors || (userForm.get('deliveryAddress.town').touched || userForm.get('deliveryAddress.town').dirty) && !userForm.get('deliveryAddress.town').valid }" />  
+                                
+                        <span class="invalid-feedback">
+                            <span *ngIf="userForm.get('deliveryAddress.town').errors?.required">
+                                Please enter your town
+                            </span>
+                            
+                        </span>
+                    </div>
+                    
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="postal" class="text-muted"><strong>Postal Code</strong></label>
+                            <input type="text" class="form-control" id="postal"
+                                    formControlName='postalCode'
+                                    [ngClass]="{'is-invalid': userForm.get('deliveryAddress').errors || (userForm.get('deliveryAddress.postalCode').touched || userForm.get('deliveryAddress.postalCode').dirty) && !userForm.get('deliveryAddress.postalCode').valid }"/>
+                        
+                        
+                            <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('deliveryAddress.postalCode').errors?.required">
+                                    Please enter your postal code
+                                </span>
+                                
+                            </span>
+                        </div>    
+                    </div>
+                    
                 </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="complex" class="text-muted"><strong>Building/Complex</strong></label>
-                        <input type="text" class="form-control mb-3" id="complex"
-                                formControlName='complex' />
-                
+    
+                <div *ngIf='provinces' class="form-row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="province" class="text-muted"><strong>Province</strong></label>
+                            <select  class="custom-select" id="province"
+                            formControlName='province'
+                            [ngClass]="{'is-invalid': userForm.get('deliveryAddress').errors || (userForm.get('deliveryAddress.province').touched || userForm.get('deliveryAddress.province').dirty) && !userForm.get('deliveryAddress.province').valid }">
+                                <option selected disabled value="">Choose</option>
+                                <option *ngFor='let province of provinces' [value]="province.provinceName">{{province.provinceName}}</option>
+                              </select>
+                              <span class="invalid-feedback">
+                                <span *ngIf="userForm.get('deliveryAddress.province').errors?.required">
+                                    Please enter your postal code
+                                </span>
+                                
+                            </span>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-            
-            <div class="form-row">
-                <div class="col-4">
-                    <div class="form-group">
-                        <label for="suburb" class="text-muted"><strong>Suburb</strong></label>
-                        <input type="text" class="form-control mb-3" id="suburb"
-                                formControlName='suburb'/>
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <label for="town" class="text-muted"><strong>City/Town</strong></label>
-                    <input type="text" class="form-control mb-3" id="town"
-                            formControlName='town' />    
-                </div>
                 
-                <div class="col-4">
-                    <div class="form-group">
-                        <label for="postal" class="text-muted"><strong>Postal Code</strong></label>
-                        <input type="text" class="form-control" id="postal"
-                                formControlName='postalCode'/>
-                    </div>    
-                </div>
-                
-            </div>
-
-            <div class="form-row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="province" class="text-muted"><strong>Province</strong></label>
-                        <input type="text" class="form-control" id="province"
-                                formControlName='province' />
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="form-group">
-                
-                <button class="btn btn-outline-warning btn-sm">Add Secondary Address</button>
-            </div>
-
             <hr>
 
             
@@ -148,7 +267,7 @@
         </div>
         <!-- Card Footer -->
         <div class="card-footer m-0">
-            <button class="btn btn-warning btn-block"><i class="fa fa-user-plus"></i> Register User</button>
+            <button (click)='registerUser()' [disabled]='!userForm.valid' class="btn btn-warning btn-block"><i class="fa fa-user-plus"></i> Register User</button>
         </div>
         </form>
 </div>

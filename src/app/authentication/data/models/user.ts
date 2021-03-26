@@ -1,10 +1,10 @@
-import { IAddress } from "./address";
+import { Address } from "./address";
 
 export class User
 {
     
     
-    constructor(public id: number, public fornames: string, public surname: string, public email: string, public password: string, public address: IAddress)
+    constructor(public id: number, public fornames: string, public surname: string, public email: string, public password: string, public address: Address)
     {
 
     }

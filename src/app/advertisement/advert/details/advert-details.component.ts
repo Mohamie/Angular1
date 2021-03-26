@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/authentication/data/models/user';
 import { Advert } from '../../data/models/advert';
 import { AdvertService } from '../../data/services/advert.service';
 
@@ -11,6 +12,7 @@ import { AdvertService } from '../../data/services/advert.service';
 export class AdvertDetailsComponent implements OnInit 
 {
   advert: Advert;
+  loggedUser: User;
 
   constructor(private activatedRoute: ActivatedRoute, private advertService: AdvertService) { }
 
@@ -24,6 +26,8 @@ export class AdvertDetailsComponent implements OnInit
         error: err => console.log(err)
       }
     )
+
+    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   }
 
 }

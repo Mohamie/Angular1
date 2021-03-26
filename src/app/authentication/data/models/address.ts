@@ -1,6 +1,6 @@
 import {IProvince} from './province'
 
-export interface IAddress
+export class Address
 {
     recipientName?: string;
     recipientPhone: number;
@@ -8,6 +8,6 @@ export interface IAddress
     complex?: string;
     surburb: string;
     town: string;
-    province: IProvince;
+    province: string;
     postalCode: number; 
 }

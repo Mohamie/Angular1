@@ -115,11 +115,15 @@ export class AdvertEditComponent implements OnInit, OnDestroy
       //update Page Title according to editing or adding new product
       this.pageTitle = advert.id == 0 ?  "Add Item" : `Edit Item: ${advert.title}`;
       
-      this.advertForm.patchValue({
-        title: advert.title,
-        price: advert.price,
-        description: advert.description
-      });
+      if(advert.id !== 0)
+      {
+        this.advertForm.patchValue({
+          title: advert.title,
+          price: advert.price,
+          description: advert.description
+        });
+      }
+     
 
   }
 

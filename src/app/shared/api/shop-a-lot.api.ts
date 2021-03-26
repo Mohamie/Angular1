@@ -16,7 +16,7 @@ export class ShopALotAPI implements InMemoryDbService
                 street: "Mandela Street",
                 surburb: "Willows",
                 town: "Bloemfontein",
-                province: {id: 0, provinceName: "Free State"},
+                province: "Free State",
                 postalCode: 9300
             }),
 
@@ -25,7 +25,7 @@ export class ShopALotAPI implements InMemoryDbService
                 street: "Eendrag CUT",
                 surburb: "Willows",
                 town: "Bloemfontein",
-                province: {id: 0, provinceName: "Free State"},
+                province: "Free State",
                 postalCode: 9300
             }),
             
@@ -34,7 +34,7 @@ export class ShopALotAPI implements InMemoryDbService
                 street: "Mandela Street",
                 surburb: "Willows",
                 town: "Bloemfontein",
-                province: {id: 0, provinceName: "Free State"},
+                province: "Free State",
                 postalCode: 9300
             }),
 

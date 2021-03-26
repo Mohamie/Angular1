@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './authentication/registration/registration.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { UserAPI } from './authentication/data/api/user.api';
+
 import { UserProfileComponent } from './authentication/user-profile/user-profile.component';
 import { AdvertModule } from './advertisement/advert/advert.module';
 import { AdvertAPI } from './advertisement/data/api/advert.api';
@@ -34,7 +34,7 @@ import { UserAdvertsGuard } from './authentication/user-profile/user-adverts.gua
       {path: 'register', component: RegistrationComponent},
       {path: 'login', component: LoginComponent},
       {path: 'profile', component: UserProfileComponent},
-      {path: 'profile/advert/edit/:advertId', canActivate: [UserAdvertsGuard], canDeactivate: [UserAdvertsGuard], component: AdvertEditComponent}
+      {path: 'profile/advert/edit/:advertId', canDeactivate: [UserAdvertsGuard], component: AdvertEditComponent}
     ]),
     InMemoryWebApiModule.forRoot(ShopALotAPI)
 

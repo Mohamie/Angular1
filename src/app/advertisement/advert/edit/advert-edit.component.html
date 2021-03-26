@@ -1,10 +1,10 @@
 <div class="card shadow">
-    <form [formGroup]='advertForm'>
+    <form *ngIf='advert' [formGroup]='advertForm'>
 
         <div class="card-header py-3">
             <p class="text-primary m-0 font-weight-bold">{{pageTitle}} </p>
         </div>
-       <div *ngIf='advert' class="card-body">
+       <div class="card-body">
             <div class="row">
                 <div class="col-8 ">
                     <div class="form-group row">
