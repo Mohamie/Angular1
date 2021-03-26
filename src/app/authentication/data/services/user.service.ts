@@ -19,7 +19,7 @@ export class UserService
     getUsers() : Observable<User[]>
     {
         return this.http.get<User[]>(this.url).pipe(
-            tap(data => console.log(`Users: ${JSON.stringify(data)}`)),
+            tap(() => console.log('')),
             catchError(this.onError)
         )
     }
@@ -39,7 +39,7 @@ export class UserService
         user.id = null; //clear for API to auto assign
 
         return this.http.post<User>(this.url, user, {headers: headers}).pipe(
-            tap(data => console.log(`New User: ${JSON.stringify(data)}`)),
+            tap(() => console.log('New User registered')),
             catchError(this.onError)
         );
     }

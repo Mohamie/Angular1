@@ -17,7 +17,7 @@ export class ProvinceService
     getProvinces() : Observable<IProvince[]>
     {
         return this.http.get<IProvince[]>(this.url).pipe(
-            tap(data => console.log(`Province loaded`)),
+            tap(() => console.log(`Province loaded`)),
             catchError(this.onError)
         )
     }
@@ -28,7 +28,7 @@ export class ProvinceService
 
         return this.http.get<IProvince>(url).pipe(
             
-            tap(data => console.log(`Province Loaded`)),
+            tap(() => console.log(`Province Loaded`)),
             
             catchError(this.onError)
         )

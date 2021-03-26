@@ -21,7 +21,7 @@ export class AdvertService
     {
         return this.http.get<Advert[]>(this.advertUrl).pipe(
             
-            tap(data => console.log(`Results: ${JSON.stringify(data)}`)),
+            tap(() => console.log('Adverts Loaded')),
             
             catchError(this.onError)
         );
@@ -38,7 +38,7 @@ export class AdvertService
 
         return this.http.get<Advert>(url).pipe(
             
-            tap(data => console.log(`Result: ${JSON.stringify(data)}`)),
+            tap(() => console.log('Advert Loaded')),
             
             catchError(this.onError)
         )
@@ -62,7 +62,7 @@ export class AdvertService
         advert.id = null; //clear for API to auto assign
 
         return this.http.post<Advert>(this.advertUrl, advert, {headers: headers}).pipe(
-            tap(data => console.log(`New Advert: ${JSON.stringify(data)}`)),
+            tap(() => console.log('Advert Created')),
             catchError(this.onError)
         );
     }
@@ -73,7 +73,7 @@ export class AdvertService
         const url = `${this.advertUrl}/${advert.id}`;
         
         return this.http.put<Advert>(url, advert, {headers :this.headers }).pipe(
-            tap(data => console.log(`Advert with id - ${advert.id} Updated `)),
+            tap(() => console.log(`Advert with id - ${advert.id} Updated `)),
             catchError(this.onError)
             );
     }   
