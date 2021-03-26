@@ -1,10 +1,10 @@
 <div class="card shadow">
-    <form action="">
+    <form [formGroup]='advertForm'>
 
         <div class="card-header py-3">
-            <p class="text-primary m-0 font-weight-bold">New Item </p>
+            <p class="text-primary m-0 font-weight-bold">{{pageTitle}} </p>
         </div>
-       <div class="card-body">
+       <div *ngIf='advert' class="card-body">
             <div class="row">
                 <div class="col-8 ">
                     <div class="form-group row">
@@ -12,12 +12,20 @@
                         <label for="title" class="col-md-4 col-form-label">Title</label>
                         
                         <div class="col-md-8">
-                            <input 
+                            <input  
                                     class="form-control" 
                                     id="title" 
                                     type="text" 
+                                    formControlName='title'
+                                    [ngClass]="{'is-invalid': (advertForm.get('title').touched || advertForm.get('title').dirty) && !advertForm.get('title').valid }"        
                                     placeholder="Title(required)">
-        
+
+                            <span class="invalid-feedback">
+                                <span *ngIf="advertForm.get('title').errors?.required">
+                                    Please enter Item Title
+                                </span>
+                            </span>
+
                         </div>
                     </div>
                     
@@ -29,9 +37,17 @@
                             <input 
                                     class="form-control" 
                                     id="price" 
-                                    type="number" 
+                                    type="number"
+                                    formControlName='price' 
+                                    [ngClass]="{'is-invalid': (advertForm.get('price').touched || advertForm.get('price').dirty) && !advertForm.get('price').valid }"
                                     placeholder="Price(required)">
-        
+                            
+                            <span class="invalid-feedback">
+                                <span *ngIf="advertForm.get('price').errors?.required">
+                                    Please enter Item Price
+                                </span>
+                            </span>
+
                         </div>
                     </div>
                     
@@ -40,13 +56,21 @@
                         <label for="description" class="col-md-4 col-form-label">Item Description</label>
                         
                         <div class="col-md-8">
-                            <textarea 
+                            <textarea
+
                                     id="description" 
                                     class="form-control" 
                                     cols="30" rows="7"
+                                    formControlName='description'
+                                    [ngClass]="{'is-invalid': (advertForm.get('description').touched || advertForm.get('description').dirty) && !advertForm.get('description').valid }"
                                     placeholder="Description" 
                                     >
                             </textarea>
+                            <span class="invalid-feedback">
+                                <span *ngIf="advertForm.get('description').errors">
+                                    Product Description should be at least 5 characters
+                                </span>
+                            </span>
         
                         </div>
                     </div>
@@ -59,9 +83,9 @@
 
        <div class="card-footer">
            <div class="row justify-content-between">
-               <button class="btn btn-outline-warning"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Item</button>   
-               <button class="btn btn-outline-dark"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>   
-               <button class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>   
+               <button (click)='saveAdvert()' class="btn btn-outline-warning"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Item</button>   
+               <button (click)='onSavedComplete()' class="btn btn-outline-dark"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>   
+               <button *ngIf='advert.id !== 0' (click)='deleteAdvert()' class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>   
            </div>
        </div>
 

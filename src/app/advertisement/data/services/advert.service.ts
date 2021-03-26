@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {Injectable} from '@angular/core'
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
+import { User } from 'src/app/authentication/data/models/user';
 import { Advert } from '../models/advert';
 
 @Injectable({
@@ -29,7 +30,10 @@ export class AdvertService
     //get Advert By ID
     getAdvertById(id: number) : Observable<Advert>
     {
-        
+        //return cleared Advert instance if advert is to be added not updated 
+        if(id === 0) return of(this.initializeAdvert());
+
+
         const url = `${this.advertUrl}/${id}`;
 
         return this.http.get<Advert>(url).pipe(
@@ -54,10 +58,10 @@ export class AdvertService
     //save Advert
     createAdvert(advert: Advert) : Observable<Advert>
     {
-
+        const headers = new HttpHeaders({'Content-Type' : 'application/json'});
         advert.id = null; //clear for API to auto assign
 
-        return this.http.post<Advert>(this.advertUrl, {headers: this.headers}).pipe(
+        return this.http.post<Advert>(this.advertUrl, advert, {headers: headers}).pipe(
             tap(data => console.log(`New Advert: ${JSON.stringify(data)}`)),
             catchError(this.onError)
         );
@@ -68,14 +72,14 @@ export class AdvertService
     {
         const url = `${this.advertUrl}/${advert.id}`;
         
-        return this.http.put<Advert>(url, {headers :this.headers }).pipe(
+        return this.http.put<Advert>(url, advert, {headers :this.headers }).pipe(
             tap(data => console.log(`Advert with id - ${advert.id} Updated `)),
             catchError(this.onError)
             );
     }   
         
     //delete Advert
-    deleteAdvert(id: Advert) : Observable<{}>
+    deleteAdvert(id: number) : Observable<{}>
     {
         const url = `${this.advertUrl}/${id}`;
             
@@ -85,9 +89,21 @@ export class AdvertService
         );
     }
    
+    initializeAdvert() : Advert
+    {
+        return {
+            id: 0,
+            title: null,
+            description: null,
+            price: null,
+            dateCreated: new Date(),
+            userEmail: (JSON.parse(localStorage.getItem("loggedUser")) as User).email  
+        }
+    }
+
     //error Handle
     private onError(err: HttpErrorResponse) 
     {
-        return throwError(err);
+        return throwError(err.error.message);
     }
 }

@@ -13,6 +13,8 @@ import { UserProfileComponent } from './authentication/user-profile/user-profile
 import { AdvertModule } from './advertisement/advert/advert.module';
 import { AdvertAPI } from './advertisement/data/api/advert.api';
 import { ShopALotAPI } from './shared/api/shop-a-lot.api';
+import { AdvertAccessGuard } from './advertisement/advert/guards/advert-access.guard';
+import { AdvertEditComponent } from './advertisement/advert/edit/advert-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ShopALotAPI } from './shared/api/shop-a-lot.api';
     RouterModule.forRoot([
       {path: 'register', component: RegistrationComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'profile', component: UserProfileComponent}
+      {path: 'profile', component: UserProfileComponent},
+      {path: 'profile/advert/edit/:advertId', component: AdvertEditComponent}
     ]),
     InMemoryWebApiModule.forRoot(ShopALotAPI)
 
